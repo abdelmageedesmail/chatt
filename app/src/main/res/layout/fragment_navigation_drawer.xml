@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/common_action_bar_splitter"
+    android:gravity="top"
+    tools:context="com.example.abdelmageed.chatting.NavigationDrawer"
+    >
+    <!-- TODO: Update blank fragment layout -->
+
+    <LinearLayout
+        android:layout_width="280dp"
+        android:layout_height="140dp"
+        android:background="@color/navigationcolor"
+        android:weightSum="2"
+        android:orientation="vertical"
+        android:id="@+id/linearLayout"
+        >
+        <FrameLayout
+            android:layout_marginTop="12dp"
+            android:layout_width="280dp"
+            android:layout_height="120dp"
+            android:background="@drawable/bgtop">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="70dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_height="70dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="18dp"
+                    android:id="@+id/profiledriver"
+                    android:src="@drawable/profilepicture"
+
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/drivername"
+                    android:textColor="@color/common_action_bar_splitter"
+                    android:textSize="25dp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="left|bottom">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/state"
+                    android:text="Drive Now"
+                    android:textColor="@color/common_action_bar_splitter"
+                    android:textSize="15dp"
+                    />
+
+            </LinearLayout>
+
+            <Switch
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/switch1"
+                android:checked="true"
+                android:layout_gravity="center_horizontal|bottom" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/drawerList"
+        android:layout_below="@+id/linearLayout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/linearLayout"
+        android:layout_alignEnd="@+id/linearLayout"
+        android:background="@color/navigationcolor"
+        android:layout_alignParentBottom="true" />
+
+
+</RelativeLayout>
