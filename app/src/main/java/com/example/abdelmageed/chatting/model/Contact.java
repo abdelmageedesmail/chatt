@@ -19,11 +19,18 @@ public class Contact {
     public String date;
     public String state;
     public int Imagechat;
+    String userID;
+
+    public String getUserID() {
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
+    }
 
     List<String>add;
-    public Contact( String userName, String userPhone){
-        this.userName=userName;
-        this.userPhone=userPhone;
+    public Contact(){
     }
 
     public String getMessage() {
@@ -56,5 +63,21 @@ public class Contact {
 
     public void setSeen(String seen) {
         this.seen = seen;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }

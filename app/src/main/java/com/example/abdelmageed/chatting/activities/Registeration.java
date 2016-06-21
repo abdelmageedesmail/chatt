@@ -3,12 +3,11 @@ package com.example.abdelmageed.chatting.activities;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -28,50 +27,54 @@ import java.util.Map;
 
 public class Registeration extends AppCompatActivity {
 
-    EditText txtUserName,txtUserPassword,txtUserFaculity,txtPersonalID,ColleagueID;
+    EditText txtUserName, txtUserPassword, txtUserFaculity, txtPersonalID, ColleagueID;
     Button register;
     StringRequest stringRequest;
     RequestQueue requestQueue;
     String userID;
     SharedPreferences pref;
-    public static final String mypreference = "mypref";
 
-    public static String url="http://emtyazna.com/mohamed/chating/index.php/activities/registerUser";
+    public static String url = "http://emtyazna.com/mohamed/chating/index.php/activities/registerUser";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registeration);
-        txtUserName=(EditText)findViewById(R.id.editTextName);
-        txtUserPassword=(EditText)findViewById(R.id.editpassword);
-        txtUserFaculity=(EditText)findViewById(R.id.editFaculityname);
-        txtPersonalID=(EditText)findViewById(R.id.editTextpersonalId);
-        ColleagueID=(EditText)findViewById(R.id.editTextId);
-        register=(Button)findViewById(R.id.buutonRegister);
+        txtUserName = (EditText) findViewById(R.id.editTextName);
+        txtUserPassword = (EditText) findViewById(R.id.editpassword);
+        txtUserFaculity = (EditText) findViewById(R.id.editFaculityname);
+        txtPersonalID = (EditText) findViewById(R.id.editTextpersonalId);
+        ColleagueID = (EditText) findViewById(R.id.editTextId);
+        register = (Button) findViewById(R.id.buutonRegister);
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                 uploadData();
+                String name = txtUserName.getText().toString();
+                String personalId = txtPersonalID.getText().toString();
+                String id = ColleagueID.getText().toString();
+                String faculity = txtUserFaculity.getText().toString();
+                String password = txtUserPassword.getText().toString();
+                if (name.equals("") || personalId.equals("") || id.equals("") || faculity.equals("") || password.equals("")) {
+                    Toast.makeText(Registeration.this, "Please fill empty fields", Toast.LENGTH_SHORT).show();
+                } else
+                    uploadData();
 
             }
         });
     }
-    public void uploadData(){
+
+    public void uploadData() {
         final ProgressDialog progressDialog = new ProgressDialog(Registeration.this);
         progressDialog.setIndeterminate(true);
         progressDialog.setMessage("Uploading...");
         progressDialog.show();
-        stringRequest=new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+        stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
-                    JSONObject object=new JSONObject(response);
-                    userID=object.getString("userId");
-                    Toast.makeText(Registeration.this,userID,Toast.LENGTH_SHORT).show();
-                    pref = getSharedPreferences(mypreference, MODE_PRIVATE);
-                    SharedPreferences.Editor edit = pref.edit();
-                    edit.putString("userId",userID);
-                    edit.commit();
-                    Toast.makeText(Registeration.this,userID,Toast.LENGTH_SHORT).show();
+                    JSONObject object = new JSONObject(response);
+                    userID = object.getString("userId");
+                    Toast.makeText(Registeration.this, userID, Toast.LENGTH_SHORT).show();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -83,22 +86,22 @@ public class Registeration extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(Registeration.this,"Error",Toast.LENGTH_SHORT).show();
+                Toast.makeText(Registeration.this, "Error", Toast.LENGTH_SHORT).show();
                 progressDialog.hide();
             }
-        }){
+        }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 HashMap<String, String> params = new HashMap<String, String>();
-                String name=txtUserName.getText().toString();
-                String personalId=txtPersonalID.getText().toString();
-                String id=ColleagueID.getText().toString();
-                String faculity=txtUserFaculity.getText().toString();
-                String password=txtUserPassword.getText().toString();
-                params.put("userCollegeId",id);
-                params.put("personId",personalId);
-                params.put("userPassword",password);
-                params.put("userName",name);
+                String name = txtUserName.getText().toString();
+                String personalId = txtPersonalID.getText().toString();
+                String id = ColleagueID.getText().toString();
+                String faculity = txtUserFaculity.getText().toString();
+                String password = txtUserPassword.getText().toString();
+                params.put("userCollegeId", id);
+                params.put("personId", personalId);
+                params.put("userPassword", password);
+                params.put("userName", name);
                 return params;
 
             }

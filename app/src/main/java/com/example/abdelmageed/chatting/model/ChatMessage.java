@@ -3,7 +3,6 @@ package com.example.abdelmageed.chatting.model;
 import android.content.SharedPreferences;
 
 import com.android.volley.toolbox.StringRequest;
-import com.example.abdelmageed.chatting.adapter.ChatArrayAdapter;
 
 /**
  * Created by abdelmageed on 19/06/16.

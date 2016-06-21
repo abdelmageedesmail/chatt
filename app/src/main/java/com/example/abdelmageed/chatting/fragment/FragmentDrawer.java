@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import com.example.abdelmageed.chatting.R;
 import com.example.abdelmageed.chatting.adapter.NavigationDrawerAdapter;
 import com.example.abdelmageed.chatting.model.NavDrawerItem;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,9 +41,9 @@ public class FragmentDrawer extends Fragment {
 
     public static List<NavDrawerItem> getData() {
         List<NavDrawerItem> data = new ArrayList<>();
-        String titles[] = {"Home", "Location", "Setting", "Log Out"};
+        String titles[] = {"Home", "Location", "Log Out"};
         // preparing navigation drawer items
-        for (int i = 0; i < titles.length ; i++) {
+        for (int i = 0; i < titles.length; i++) {
             NavDrawerItem navItem = new NavDrawerItem();
             navItem.setTitle(titles[i]);
             data.add(navItem);

@@ -45,7 +45,6 @@ public class Setting extends AppCompatActivity implements View.OnClickListener {
         imageprofile = (ImageView) findViewById(R.id.circleView);
         btncamera.setOnClickListener(this);
 
-
     }
 
     private void selectImage() {

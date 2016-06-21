@@ -4,14 +4,42 @@ package com.example.abdelmageed.chatting.model;
  * Created by abdelmageed on 20/06/16.
  */
 public class Message {
-    private static String message;
+    private String message;
+    private String date;
+    String seen;
+    String messageFrom;
 
+    public String getSeen() {
+        return seen;
+    }
 
-    public static String getMessage() {
+    public void setSeen(String seen) {
+        this.seen = seen;
+    }
+
+    public String getMessageFrom() {
+        return messageFrom;
+    }
+
+    public void setMessageFrom(String messageFrom) {
+        this.messageFrom = messageFrom;
+    }
+
+    public String getMessage() {
         return message;
     }
 
-    public static void setMessage(String message) {
-        Message.message = message;
+    public void setMessage(String message) {
+        this.message = message;
     }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+
 }
