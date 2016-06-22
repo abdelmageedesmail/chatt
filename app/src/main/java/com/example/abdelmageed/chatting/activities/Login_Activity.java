@@ -33,7 +33,7 @@ public class Login_Activity extends AppCompatActivity {
     EditText txtuserEmail, txtUserPassword;
     StringRequest stringRequest;
     RequestQueue requestQueue;
-    String userName, userPhone, userId;
+    public static String userName, userPhone, userId;
     SharedPreferences pref;
 
     public static String url = "http://emtyazna.com/mohamed/chating/index.php/activities/userLogin";
@@ -85,6 +85,7 @@ public class Login_Activity extends AppCompatActivity {
 
                         SharedPreferences.Editor edit = pref.edit();
                         edit.putString("userId", userId);
+                        edit.putString("userName",userName);
                         edit.commit();
 
                         startActivity(new Intent(Login_Activity.this, InnerActivity.class));

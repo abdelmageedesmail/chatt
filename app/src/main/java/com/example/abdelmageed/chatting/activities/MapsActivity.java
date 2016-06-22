@@ -92,12 +92,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         mGPS = new GPSTracker(getApplicationContext());
 
-        //get DriverID
 
         sh = getSharedPreferences(mypreference, Context.MODE_PRIVATE);
         userId = sh.getString("userId", null);
 
 //------------------------------------------------------------------------------------------
+
+
         class GetGBS extends TimerTask {
             public void run() {
                 System.out.println("Hello World!");
@@ -110,7 +111,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     String lat = String.valueOf(mGPS.getLatitude());
                     new driverTask(userId, lat, lon).execute();
                 }
-                getContact();
+
             }
 
         }
@@ -118,6 +119,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         Timer timer = new Timer();
         timer.schedule(new GetGBS(), 0, 5000);
 
+        getContact();
     }
 
 
@@ -133,11 +135,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     friendID=object.getString("userId");
                     friendName=object.getString("userId");
                     friendColleauge=object.getString("userCollegeId");
-                    //Toast.makeText(MapsActivity.this, friendName, Toast.LENGTH_SHORT).show();
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                Toast.makeText(MapsActivity.this,friendName,Toast.LENGTH_SHORT).show();
             }
         }, new Response.ErrorListener() {
             @Override

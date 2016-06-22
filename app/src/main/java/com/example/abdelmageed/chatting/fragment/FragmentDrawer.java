@@ -1,6 +1,7 @@
 package com.example.abdelmageed.chatting.fragment;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
@@ -13,6 +14,8 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.abdelmageed.chatting.R;
 import com.example.abdelmageed.chatting.adapter.NavigationDrawerAdapter;
@@ -30,6 +33,11 @@ public class FragmentDrawer extends Fragment {
     private NavigationDrawerAdapter adapter;
     private View containerView;
     private FragmentDrawerListener drawerListener;
+    ImageView image ;
+    TextView txtName;
+    SharedPreferences sh;
+    public static final String mypreference = "mypref";
+    public static String name;
 
     public FragmentDrawer() {
 
@@ -64,6 +72,13 @@ public class FragmentDrawer extends Fragment {
                              Bundle savedInstanceState) {
         // Inflating view layout
         View layout = inflater.inflate(R.layout.fragment_navigation_drawer, container, false);
+        image= (ImageView) layout.findViewById(R.id.profileUser);
+        image.setImageResource(R.mipmap.icon);
+
+        txtName=(TextView) layout.findViewById(R.id.userName);
+        sh = getActivity().getSharedPreferences(mypreference, Context.MODE_PRIVATE);
+        name = sh.getString("userName", null);
+        txtName.setText(name);
         recyclerView = (RecyclerView) layout.findViewById(R.id.drawerList);
         adapter = new NavigationDrawerAdapter(getActivity(), getData());
         recyclerView.setAdapter(adapter);
