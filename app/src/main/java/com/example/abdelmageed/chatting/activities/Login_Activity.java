@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -19,6 +20,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.abdelmageed.chatting.R;
+import com.example.abdelmageed.chatting.Utils.Utils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -41,6 +43,9 @@ public class Login_Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_);
+        Utils utils = new Utils(this, "JF_Flat_regular.ttf");
+        TextView header = (TextView) findViewById(R.id.signin_header);
+        utils.FonTChange(header);
         logIn = (Button) findViewById(R.id.buutonLogin);
         ImageView img = (ImageView) findViewById(R.id.imagelogin);
         txtuserEmail = (EditText) findViewById(R.id.TextEmail);

@@ -7,8 +7,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +20,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.abdelmageed.chatting.R;
+import com.example.abdelmageed.chatting.Utils.Utils;
 import com.example.abdelmageed.chatting.adapter.MessagesAdapter;
 import com.example.abdelmageed.chatting.model.Message;
 
@@ -34,7 +35,7 @@ public class ChatPage extends AppCompatActivity {
 
     Toolbar toolbar;
     EditText txtcontentMessage;
-    ImageButton imgbtnSend;
+    Button imgbtnSend;
     StringRequest stringRequest;
     RequestQueue requestQueue;
     SharedPreferences sh;
@@ -50,13 +51,16 @@ public class ChatPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_messages_page);
+        Utils utils = new Utils(this);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle("");
         txtUsername = (TextView) findViewById(R.id.friend_name);
         txtUsername.setText(getIntent().getExtras().getString("friendName"));
         txtcontentMessage = (EditText) findViewById(R.id.txtmessage);
-        imgbtnSend = (ImageButton) findViewById(R.id.send);
+        imgbtnSend = (Button) findViewById(R.id.send);
+
+        utils.AwSomeFont(imgbtnSend);
         adapter = new MessagesAdapter(this);
         RecyclerView messages_recycler = (RecyclerView) findViewById(R.id.chat_page);
         messages_recycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));

@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.EditText;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,7 +37,7 @@ public class AddFriendDialog extends Dialog {
     RequestQueue requestQueue;
     StringRequest stringRequest;
     EditText txtSearch;
-    ImageButton search, close, startConversation;
+    ImageView search, close, startConversation;
     TextView friendName;
     String friend;
     public String id;
@@ -59,10 +59,10 @@ public class AddFriendDialog extends Dialog {
         setContentView(R.layout.dialog_add_friend);
         txtSearch = (EditText) findViewById(R.id.txtSearch);
         friendName = (TextView) findViewById(R.id.friendName);
-        search = (ImageButton) findViewById(R.id.imgBtnSearch);
-        close = (ImageButton) findViewById(R.id.close);
-        startConversation = (ImageButton) findViewById(R.id.startConversation);
-        startConversation.setImageResource(R.drawable.send);
+        search = (ImageView) findViewById(R.id.imgBtnSearch);
+        close = (ImageView) findViewById(R.id.close);
+        startConversation = (ImageView) findViewById(R.id.startConversation);
+        //startConversation.setImageResource(R.drawable.send);
         // getWindow().setAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.popupanimation));
         search.setOnClickListener(new View.OnClickListener() {
             @Override

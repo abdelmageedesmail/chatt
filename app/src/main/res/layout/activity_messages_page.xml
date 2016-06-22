@@ -28,19 +28,13 @@
                     android:id="@+id/friend_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
+                    android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
                     android:textColor="#fff"
                     android:textSize="20sp" />
 
 
-                <ImageView
-                    android:id="@+id/iv_call"
-                    android:layout_width="50dp"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentRight="true"
-                    android:padding="10dp"
-                    android:src="@drawable/call" />
             </RelativeLayout>
 
 
@@ -58,26 +52,41 @@
         android:layout_below="@+id/ac_bar"
         android:layout_marginTop="10dp" />
 
-
-    <EditText
-        android:id="@+id/txtmessage"
-        android:layout_width="300dp"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:ems="10"
-        android:hint="Write your message"
-        android:inputType="textMultiLine"
-        />
+        android:layout_alignParentLeft="true"
+        android:minHeight="100dp"
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp">
 
-    <ImageButton
-        android:id="@+id/send"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:background="@drawable/send"
-        android:layout_toRightOf="@+id/txtmessage"/>
+        <EditText
+            android:id="@+id/txtmessage"
+            android:layout_width="300dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:ems="10"
+            android:hint="Write your message..."
+            android:inputType="textMultiLine"
+            android:background="@drawable/border_text"
+            android:padding="10dp"
+            android:gravity="top"
+            android:textColor="#000"
+
+            />
+
+        <Button
+            android:id="@+id/send"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_toRightOf="@+id/txtmessage"
+            android:text="@string/send_btn"
+            android:background="@drawable/select"/>
+    </LinearLayout>
 
 
 </RelativeLayout>
