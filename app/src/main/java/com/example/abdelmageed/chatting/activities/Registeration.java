@@ -17,6 +17,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.abdelmageed.chatting.GCM.RegistrationServices;
 import com.example.abdelmageed.chatting.R;
 
 import org.json.JSONException;
@@ -40,6 +41,9 @@ public class Registeration extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registeration);
+
+        startService(new Intent(this, RegistrationServices.class));
+
         txtUserName = (EditText) findViewById(R.id.editTextName);
         txtUserPassword = (EditText) findViewById(R.id.editpassword);
         txtUserFaculity = (EditText) findViewById(R.id.editFaculityname);
