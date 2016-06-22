@@ -127,7 +127,7 @@ public class ChatFragment extends Fragment {
                 contact.setMessage(object.getString("messageDescription"));
                 contact.setDate(object.getString("messageTime"));
                 contact.setUserName(object.getString("userName"));
-                contact.setUserID(object.getString("id"));
+                contact.setUserID(object.getString("withUser"));
 
                 tripList.add(contact);
             }
