@@ -87,6 +87,7 @@ public class Login_Activity extends AppCompatActivity {
                         edit.commit();
 
                         startActivity(new Intent(Login_Activity.this, InnerActivity.class));
+                        finish();
                     }
 
 
