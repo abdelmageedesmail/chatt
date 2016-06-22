@@ -45,7 +45,6 @@ public class Registeration extends AppCompatActivity {
         setContentView(R.layout.activity_registeration);
         Utils utils = new Utils(this, "JF_Flat_regular.ttf");
 
-        startService(new Intent(this, RegistrationServices.class));
         TextView header = (TextView) findViewById(R.id.sign_up_header);
         utils.FonTChange(header);
         txtUserName = (EditText) findViewById(R.id.editTextName);

@@ -74,7 +74,7 @@ public class RegistrationServices extends IntentService{
             protected Map<String, String> getParams() throws AuthFailureError {
 
                 Map<String, String> params = new HashMap<>();
-                params.put("token", token);
+                params.put("gcmToken", token);
                 return params;
             }
         };
