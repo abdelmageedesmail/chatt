@@ -3,111 +3,101 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.abdelmageed.chatting.activities.Registeration"
-    android:background="@color/backfirst"
-    >
+    android:background="@color/colorPrimary"
+    tools:context="com.example.abdelmageed.chatting.activities.Registeration">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:orientation="vertical">
 
-        <android.support.design.widget.TextInputLayout
+        <TextView
+            android:id="@+id/sign_up_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:text="Sign Up"
+            android:textColor="#fff"
+            android:textSize="40sp" />
+
+        <EditText
+            android:id="@+id/editTextName"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:background="#fff"
+            android:hint="User Name"
+            android:inputType="textEmailAddress"
+            android:padding="5dp" />
+
+
+        <EditText
+            android:id="@+id/editTextId"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:background="#fff"
+            android:hint="Colleage Id"
+            android:inputType="textEmailAddress"
+            android:padding="5dp" />
+
+
+        <EditText
+            android:id="@+id/editFaculityname"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:background="#fff"
+            android:hint="faculity"
+            android:inputType="textEmailAddress"
+            android:padding="5dp" />
+
+
+        <EditText
+            android:id="@+id/editTextpersonalId"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:background="#fff"
+            android:hint="PersonalID"
+            android:padding="5dp" />
+
+        <EditText
+            android:id="@+id/editpassword"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:background="#fff"
+            android:hint="password"
+            android:inputType="textPassword"
+            android:padding="5dp" />
+
+
+        <Button
+            android:id="@+id/buutonRegister"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            >
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/editTextName"
-                android:hint="User Name"
-                android:textColor="@color/windowBackground"
-                android:layout_marginBottom="20dp"
-                android:inputType="textEmailAddress"/>
-
-        </android.support.design.widget.TextInputLayout>
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/editTextId"
-                android:hint="Colleage Id"
-                android:textColor="@color/windowBackground"
-                android:layout_marginBottom="20dp"
-                android:inputType="textEmailAddress"/>
-
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/editFaculityname"
-                android:hint="faculity"
-                android:textColor="@color/windowBackground"
-                android:layout_marginBottom="20dp"
-                android:inputType="textEmailAddress"/>
-
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/editTextpersonalId"
-                android:hint="PersonalID"
-                android:textColor="@color/windowBackground"
-                android:inputType="textPassword"/>
-
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/editpassword"
-                android:hint="password"
-                android:textColor="@color/windowBackground"
-                android:layout_marginBottom="20dp"
-                android:inputType="textPassword"/>
-
-        </android.support.design.widget.TextInputLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            >
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Register"
-                android:id="@+id/buutonRegister"
-                />
-        </LinearLayout>
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/border_button"
+            android:text="Register"
+            android:textColor="#fff"
+            android:textSize="20sp" />
     </LinearLayout>
+
 
 </ScrollView>

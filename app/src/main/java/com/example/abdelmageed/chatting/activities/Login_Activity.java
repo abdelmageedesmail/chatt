@@ -8,7 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,7 +32,7 @@ public class Login_Activity extends AppCompatActivity {
     EditText txtuserEmail, txtUserPassword;
     StringRequest stringRequest;
     RequestQueue requestQueue;
-    public static String userName, userPhone, userId;
+    public static String userName, userId;
     SharedPreferences pref;
 
     public static String url = "http://emtyazna.com/mohamed/chating/index.php/activities/userLogin";
@@ -47,11 +46,9 @@ public class Login_Activity extends AppCompatActivity {
         TextView header = (TextView) findViewById(R.id.signin_header);
         utils.FonTChange(header);
         logIn = (Button) findViewById(R.id.buutonLogin);
-       // ImageView img = (ImageView) findViewById(R.id.imagelogin);
         txtuserEmail = (EditText) findViewById(R.id.TextEmail);
         txtUserPassword = (EditText) findViewById(R.id.TextPassword);
         pref = getApplicationContext().getSharedPreferences("Mypref", MODE_PRIVATE);
-      //  img.setImageResource(R.mipmap.icon);
         logIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,14 +75,15 @@ public class Login_Activity extends AppCompatActivity {
                     JSONObject object = new JSONObject(response);
                     if (object.keys().next().equals("error")) {
 
+                        Toast.makeText(Login_Activity.this, "Check UserName and Password", Toast.LENGTH_LONG).show();
+
                     } else {
                         userName = object.getString("userName");
                         userId = object.getString("id");
-                        //     Toast.makeText(Login_Activity.this,userId,Toast.LENGTH_LONG).show();
 
                         SharedPreferences.Editor edit = pref.edit();
                         edit.putString("userId", userId);
-                        edit.putString("userName",userName);
+                        edit.putString("userName", userName);
                         edit.commit();
 
                         startActivity(new Intent(Login_Activity.this, InnerActivity.class));
@@ -102,8 +100,7 @@ public class Login_Activity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(Login_Activity.this, error.toString(), Toast.LENGTH_SHORT).show();
-                progressDialog.hide();
+                progressDialog.setMessage("Error Connection...");
             }
         }) {
             @Override

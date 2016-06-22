@@ -52,6 +52,16 @@ public class ChatRecyclerAdapter extends RecyclerView.Adapter<ChatRecyclerAdapte
         });
 
         holder.tv_message.setText(contacts.get(position).getMessage());
+        holder.tv_message.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(context, ChatPage.class);
+                i.putExtra("friendId", contacts.get(position).getUserID());
+                i.putExtra("friendName", contacts.get(position).getUserName());
+                context.startActivity(i);
+
+            }
+        });
 
 
     }

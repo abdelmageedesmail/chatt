@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -19,6 +20,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.abdelmageed.chatting.GCM.RegistrationServices;
 import com.example.abdelmageed.chatting.R;
+import com.example.abdelmageed.chatting.Utils.Utils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -41,9 +43,11 @@ public class Registeration extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registeration);
+        Utils utils = new Utils(this, "JF_Flat_regular.ttf");
 
         startService(new Intent(this, RegistrationServices.class));
-
+        TextView header = (TextView) findViewById(R.id.sign_up_header);
+        utils.FonTChange(header);
         txtUserName = (EditText) findViewById(R.id.editTextName);
         txtUserPassword = (EditText) findViewById(R.id.editpassword);
         txtUserFaculity = (EditText) findViewById(R.id.editFaculityname);
@@ -83,15 +87,14 @@ public class Registeration extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                progressDialog.hide();
+                progressDialog.dismiss();
                 startActivity(new Intent(Registeration.this, Login_Activity.class));
                 finish();
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(Registeration.this, "Error", Toast.LENGTH_SHORT).show();
-                progressDialog.hide();
+                progressDialog.setMessage("Error Connection...");
             }
         }) {
             @Override

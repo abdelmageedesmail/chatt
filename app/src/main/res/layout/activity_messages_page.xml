@@ -73,7 +73,7 @@
             android:id="@+id/txtmessage"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="10dp"
             android:layout_weight="1"
             android:background="@drawable/border_text"
             android:ems="10"
@@ -94,7 +94,8 @@
             android:layout_marginRight="10dp"
             android:background="@drawable/select"
             android:text="@string/send_btn"
-            android:textColor="@color/colorPrimary"/>
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp"/>
     </LinearLayout>
 
 

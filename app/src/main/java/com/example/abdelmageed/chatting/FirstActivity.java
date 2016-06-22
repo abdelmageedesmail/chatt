@@ -21,8 +21,6 @@ public class FirstActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first);
         sh = getApplicationContext().getSharedPreferences("Mypref", MODE_PRIVATE);
-        ImageView imageicon = (ImageView) findViewById(R.id.imageicon);
-        imageicon.setImageResource(R.mipmap.icon);
         LogIn = (Button) findViewById(R.id.btnlogin);
         Regesteration = (Button) findViewById(R.id.btnRgesteration);
         LogIn.setOnClickListener(this);

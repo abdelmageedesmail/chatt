@@ -34,9 +34,9 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:background="#fff"
-                android:hint="Email"
+                android:hint="College ID"
                 android:inputType="textEmailAddress"
-                android:padding="10dp" />
+                android:padding="5dp"/>
 
 
             <EditText
@@ -49,7 +49,7 @@
                 android:background="#fff"
                 android:hint="Password"
                 android:inputType="textPassword"
-                android:padding="10dp" />
+                android:padding="5dp"/>
 
 
             <LinearLayout
