@@ -49,6 +49,7 @@ public class ChatPage extends AppCompatActivity {
     String userId;
     public static String message;
     MessagesAdapter adapter;
+    RecyclerView messages_recycler;
 
 
     @Override
@@ -66,10 +67,10 @@ public class ChatPage extends AppCompatActivity {
 
         utils.AwSomeFont(imgbtnSend);
         adapter = new MessagesAdapter(this);
-        RecyclerView messages_recycler = (RecyclerView) findViewById(R.id.chat_page);
+      messages_recycler = (RecyclerView) findViewById(R.id.chat_page);
         messages_recycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         messages_recycler.setAdapter(adapter);
-        messages_recycler.smoothScrollToPosition(adapter.getItemCount()-1);
+
 
         sh = getApplicationContext().getSharedPreferences("Mypref", MODE_PRIVATE);
         userId = sh.getString("userId", "");
@@ -183,6 +184,8 @@ public class ChatPage extends AppCompatActivity {
                 adapter.add(message);
 
             }
+            if(adapter.getItemCount()>0)
+                messages_recycler.smoothScrollToPosition((adapter.getItemCount())-1);
 
         } catch (JSONException e) {
             e.printStackTrace();
