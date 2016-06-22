@@ -22,6 +22,18 @@ public class GCMListener extends GcmListenerService {
         super.onMessageReceived(from, data);
         String message = data.getString("message");
         sendNotification(message);
+        updateMyActivity(this, message);
+    }
+
+    static void updateMyActivity(Context context, String message) {
+
+        Intent intent = new Intent("refresh");
+
+        //put whatever data you want to send, if any
+        intent.putExtra("message", message);
+
+        //send broadcast
+        context.sendBroadcast(intent);
     }
 
     private void sendNotification(String message) {
@@ -29,7 +41,7 @@ public class GCMListener extends GcmListenerService {
         Intent intent = new Intent(this, Registeration.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
-        PendingIntent pendingIntent = PendingIntent.getActivity(this,0, intent,
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent,
                 PendingIntent.FLAG_ONE_SHOT);
 
         Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);

@@ -64,7 +64,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private GoogleMap mMap;
     GPSTracker mGPS;
     SharedPreferences sh;
-    public static final String mypreference = "mypref";
+    public static final String mypreference = "Mypref";
     String userId,friendID,friendName,friendColleauge;
     Toolbar mToolbar;
     ImageView imgarraw;

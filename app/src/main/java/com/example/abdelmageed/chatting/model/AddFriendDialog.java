@@ -39,8 +39,6 @@ public class AddFriendDialog extends Dialog {
     EditText txtSearch;
     ImageView search, close, startConversation;
     TextView friendName;
-    String friend;
-    public String id;
     SharedPreferences pref;
     public static String friendShared;
     public static String idShared;
@@ -92,11 +90,9 @@ public class AddFriendDialog extends Dialog {
                         found = false;
                         Toast.makeText(context, "Not Found user", Toast.LENGTH_SHORT).show();
                     } else {
-                        friend = object.getString("userName");
-                        id = object.getString("id");
-                        friendName.setText(friend);
-                        friendShared = friend;
-                        idShared = id;
+                        friendShared = object.getString("userName");
+                        idShared = object.getString("id");
+                        friendName.setText(friendShared);
                         found = true;
                     }
                 } catch (JSONException e) {
@@ -112,8 +108,7 @@ public class AddFriendDialog extends Dialog {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> param = new HashMap<>();
-                friend = txtSearch.getText().toString();
-                param.put("userCollegeId", friend);
+                param.put("userCollegeId", txtSearch.getText().toString());
                 return param;
             }
         };
@@ -122,6 +117,7 @@ public class AddFriendDialog extends Dialog {
     }
 
     public void addFriend() {
+        getFriend();
         if (found) {
             Intent i = new Intent(context, ChatPage.class);
             i.putExtra("friendId", idShared);

@@ -1,5 +1,6 @@
 package com.example.abdelmageed.chatting.fragment;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -76,6 +77,10 @@ public class ChatFragment extends Fragment {
     }
 
     private void refresh() {
+        final ProgressDialog progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setIndeterminate(true);
+        progressDialog.setMessage("loading...");
+        progressDialog.show();
         RequestQueue queue = Volley.newRequestQueue(getActivity());
         String url = "http://emtyazna.com/mohamed/chating/index.php/activities/getMessages";
 
@@ -85,10 +90,12 @@ public class ChatFragment extends Fragment {
                     public void onResponse(String response) {
                         if (response != null)
                             getChat(response);
+                        progressDialog.dismiss();
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                progressDialog.setMessage("Error connection...");
 
             }
         }

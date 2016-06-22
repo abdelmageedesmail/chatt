@@ -1,5 +1,9 @@
 package com.example.abdelmageed.chatting.activities;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -65,29 +69,54 @@ public class ChatPage extends AppCompatActivity {
         RecyclerView messages_recycler = (RecyclerView) findViewById(R.id.chat_page);
         messages_recycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         messages_recycler.setAdapter(adapter);
+        messages_recycler.smoothScrollToPosition(adapter.getItemCount()-1);
 
         sh = getApplicationContext().getSharedPreferences("Mypref", MODE_PRIVATE);
         userId = sh.getString("userId", "");
-        Toast.makeText(this, userId, Toast.LENGTH_LONG).show();
         friendId = getIntent().getExtras().getString("friendId");
 
         imgbtnSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 sendData();
-                getMessages();
+
             }
         });
         getMessages();
 
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        unregisterReceiver(mMessageReceiver);
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        registerReceiver(mMessageReceiver, new IntentFilter("refresh"));
+    }
+
+    private BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+
+            // Extract data included in the Intent
+            String message = intent.getStringExtra("message");
+            getMessages();
+
+            //do other stuff here
+        }
+    };
 
     //send message
     public void sendData() {
         stringRequest = new StringRequest(Request.Method.POST, "http://emtyazna.com/mohamed/chating/index.php/activities/insertMessage", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                getMessages();
                 txtcontentMessage.setText("");
 
             }
@@ -113,18 +142,18 @@ public class ChatPage extends AppCompatActivity {
 
 
     public void getMessages() {
+
         stringRequest = new StringRequest(Request.Method.POST, "http://emtyazna.com/mohamed/chating/index.php/activities/getMessagesBetween", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Toast.makeText(ChatPage.this, response, Toast.LENGTH_SHORT).show();
                 addMessages(response);
+
 
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
 
-                Toast.makeText(ChatPage.this, error.toString(), Toast.LENGTH_SHORT).show();
 
             }
         }) {

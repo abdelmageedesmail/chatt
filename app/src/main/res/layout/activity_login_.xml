@@ -36,8 +36,7 @@
                 android:background="#fff"
                 android:hint="Email"
                 android:inputType="textEmailAddress"
-                android:padding="10dp"
-                android:textColor="@color/windowBackground" />
+                android:padding="10dp" />
 
 
             <EditText
@@ -50,8 +49,7 @@
                 android:background="#fff"
                 android:hint="Password"
                 android:inputType="textPassword"
-                android:padding="10dp"
-                android:textColor="@color/windowBackground" />
+                android:padding="10dp" />
 
 
             <LinearLayout
