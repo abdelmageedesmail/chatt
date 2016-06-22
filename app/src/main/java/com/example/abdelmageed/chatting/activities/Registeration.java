@@ -45,14 +45,9 @@ public class Registeration extends AppCompatActivity {
         setContentView(R.layout.activity_registeration);
         Utils utils = new Utils(this, "JF_Flat_regular.ttf");
 
-<<<<<<< Updated upstream
         startService(new Intent(this, RegistrationServices.class));
         TextView header = (TextView) findViewById(R.id.sign_up_header);
         utils.FonTChange(header);
-=======
-
-
->>>>>>> Stashed changes
         txtUserName = (EditText) findViewById(R.id.editTextName);
         txtUserPassword = (EditText) findViewById(R.id.editpassword);
         txtUserFaculity = (EditText) findViewById(R.id.editFaculityname);
@@ -92,12 +87,10 @@ public class Registeration extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-<<<<<<< Updated upstream
                 progressDialog.dismiss();
-=======
+
                 progressDialog.hide();
                 startService(new Intent(Registeration.this, RegistrationServices.class));
->>>>>>> Stashed changes
                 startActivity(new Intent(Registeration.this, Login_Activity.class));
                 finish();
             }
