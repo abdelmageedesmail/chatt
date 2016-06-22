@@ -71,6 +71,7 @@ public class ChatPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 sendData();
+                getMessages();
             }
         });
         getMessages();
@@ -84,7 +85,7 @@ public class ChatPage extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 txtcontentMessage.setText("");
-                getMessages();
+
             }
         }, new Response.ErrorListener() {
             @Override

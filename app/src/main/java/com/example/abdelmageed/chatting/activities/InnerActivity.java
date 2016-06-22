@@ -1,6 +1,7 @@
 package com.example.abdelmageed.chatting.activities;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
@@ -51,7 +52,9 @@ public class InnerActivity extends AppCompatActivity implements FragmentDrawer.F
                 break;
 
             case 2:
-                startActivity(new Intent(InnerActivity.this, Setting.class));
+                SharedPreferences sh = getApplicationContext().getSharedPreferences("Mypref", MODE_PRIVATE);
+                sh.edit().putString("userId", "").commit();
+                startActivity(new Intent(InnerActivity.this, Login_Activity.class));
                 break;
             default:
                 break;
