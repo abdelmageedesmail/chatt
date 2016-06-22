@@ -33,14 +33,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by abdelmageed on 10/06/16.
- */
+
+
 public class ChatFragment extends Fragment {
 
     ChatRecyclerAdapter adapter;
     SharedPreferences sh;
-    String userId;
+    String userId,userLat,userLong;
 
     @Nullable
     @Override
@@ -48,6 +47,8 @@ public class ChatFragment extends Fragment {
         View view = inflater.inflate(R.layout.chatfragment, container, false);
         sh = getActivity().getApplicationContext().getSharedPreferences("Mypref", Context.MODE_PRIVATE);
         userId = sh.getString("userId", "");
+        userLat=sh.getString("latUser","");
+        userLong=sh.getString("lonUser","");
         init(view);
         return view;
     }
@@ -136,4 +137,49 @@ public class ChatFragment extends Fragment {
             e.printStackTrace();
         }
     }
+
+//    public void getContact(){
+//        StringRequest stringRequest=new StringRequest(Request.Method.POST, "http://emtyazna.com/mohamed/chating/index.php/activities/getContacts", new Response.Listener<String>() {
+//            @Override
+//            public void onResponse(String response) {
+//
+//                getFriend(response);
+//            }
+//        }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//
+//            }
+//        }) {
+//            @Override
+//            protected Map<String, String> getParams() throws AuthFailureError {
+//                Map<String, String> param = new HashMap<>();
+//                param.put("userId", userId);
+//                param.put("userLang", userLong);
+//                param.put("userLat", userLat);
+//                return param;
+//            }
+//        };
+//        RequestQueue requestQueue=Volley.newRequestQueue(getActivity());
+//        requestQueue.add(stringRequest);
+//    }
+//
+//    public void getFriend(String content){
+//        try {
+//            JSONArray array = new JSONArray(content);
+//            ArrayList<Contact> tripList = new ArrayList<>();
+//            for (int i = 0; i < array.length(); i++) {
+//                JSONObject object = array.getJSONObject(i);
+//                Contact contact = new Contact();
+//                contact.setUserName(object.getString("userName"));
+//                contact.setUserID(object.getString("id"));
+//
+//                tripList.add(contact);
+//            }
+//
+//            adapter.add(tripList);
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
+//    }
 }

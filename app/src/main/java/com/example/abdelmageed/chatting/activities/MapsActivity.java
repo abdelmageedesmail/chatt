@@ -70,6 +70,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     ImageView imgarraw;
     StringRequest stringRequest;
     RequestQueue requestQueue;
+    public static String lon,lat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -183,14 +184,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        String lon;
-        String lat;
+
         if (mGPS.canGetLocation) {
             mGPS.getLocation();
             //mGPS.onLocationChanged(mGPS.getLocation());
             Log.i("Lat  ", mGPS.getLatitude() + "       Lon" + mGPS.getLongitude());
             lon = String.valueOf(mGPS.getLongitude());
             lat = String.valueOf(mGPS.getLatitude());
+            SharedPreferences.Editor editor=sh.edit();
+            editor.putString("latUser",lat);
+            editor.putString("lonUser",lon);
+            editor.commit();
         }
         mGPS = new GPSTracker(MapsActivity.this);
         try {

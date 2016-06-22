@@ -13,10 +13,8 @@ import com.example.abdelmageed.chatting.R;
 import com.example.abdelmageed.chatting.fragment.ChatFragment;
 import com.example.abdelmageed.chatting.fragment.FragmentDrawer;
 
-/**
- * Inner acivity have 3 sliding tabs fragment call ,chat ,contact
- * navigation drawer has 3 items Location have GpsTracker in the map done with it services ,setting ,logout
- */
+
+
 public class InnerActivity extends AppCompatActivity implements FragmentDrawer.FragmentDrawerListener {
     private FragmentDrawer drawerFragment;
 
@@ -43,8 +41,7 @@ public class InnerActivity extends AppCompatActivity implements FragmentDrawer.F
 
 
     private void displayView(int position) {
-        Fragment fragment = null;
-        String title = getString(R.string.app_name);
+
         switch (position) {
 
             case 1:
@@ -56,16 +53,12 @@ public class InnerActivity extends AppCompatActivity implements FragmentDrawer.F
                 sh.edit().putString("userId", "").commit();
                 startActivity(new Intent(InnerActivity.this, Login_Activity.class));
                 break;
+            case 3:
+                startActivity(new Intent(InnerActivity.this,Login_Activity.class));
+                finish();
             default:
                 break;
         }
-
-        /*if (fragment != null) {
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.contain_tab, fragment);
-            fragmentTransaction.commit();
-        }*/
 
     }
 

@@ -13,9 +13,7 @@ import com.example.abdelmageed.chatting.R;
 import com.example.abdelmageed.chatting.activities.Registeration;
 import com.google.android.gms.gcm.GcmListenerService;
 
-/**
- * Created by abdelmageed on 20/06/16.
- */
+
 public class GCMListener extends GcmListenerService {
     @Override
     public void onMessageReceived(String from, Bundle data) {
@@ -47,8 +45,8 @@ public class GCMListener extends GcmListenerService {
         Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
-                .setSmallIcon(R.mipmap.ic_launcher)
-                .setContentTitle("HelloGCM")
+                .setSmallIcon(R.mipmap.icon)
+                .setContentTitle("Message")
                 .setContentText(message)
                 .setAutoCancel(true)
                 .setSound(defaultSoundUri)
