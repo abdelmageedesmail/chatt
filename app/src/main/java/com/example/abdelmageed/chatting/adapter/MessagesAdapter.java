@@ -16,9 +16,7 @@ import com.example.abdelmageed.chatting.model.Message;
 
 import java.util.ArrayList;
 
-/**
- * Created by mohamed on 21/06/16.
- */
+
 public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.MyHolder> {
 
     Context context;

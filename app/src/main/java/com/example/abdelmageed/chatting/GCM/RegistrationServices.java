@@ -19,9 +19,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by abdelmageed on 18/06/16.
- */
+
 public class RegistrationServices extends IntentService{
     SharedPreferences preferences;
     SharedPreferences.Editor prefEditor;
@@ -52,7 +50,7 @@ public class RegistrationServices extends IntentService{
 
 
     public void sendTokenToServer(final String token){
-        String ADD_TOKEN_URL = "http://emtyazna.com/mohamed/chating/activities/registerGcm";
+        String ADD_TOKEN_URL = "http://emtyazna.com/mohamed/chating/index.php/activities/registerUser";
         StringRequest stringRequest=new StringRequest(Request.Method.POST, ADD_TOKEN_URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {

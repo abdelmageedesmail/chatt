@@ -58,10 +58,7 @@ public class AddFriendDialog extends Dialog {
         txtSearch = (EditText) findViewById(R.id.txtSearch);
         friendName = (TextView) findViewById(R.id.friendName);
         search = (ImageView) findViewById(R.id.imgBtnSearch);
-        close = (ImageView) findViewById(R.id.close);
         startConversation = (ImageView) findViewById(R.id.startConversation);
-        //startConversation.setImageResource(R.drawable.send);
-        // getWindow().setAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.popupanimation));
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

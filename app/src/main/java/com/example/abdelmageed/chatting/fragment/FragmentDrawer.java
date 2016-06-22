@@ -49,11 +49,14 @@ public class FragmentDrawer extends Fragment {
 
     public static List<NavDrawerItem> getData() {
         List<NavDrawerItem> data = new ArrayList<>();
+
+        int image[]={R.mipmap.home,R.mipmap.location,R.mipmap.logout};
         String titles[] = {"Home", "Location", "Log Out"};
         // preparing navigation drawer items
-        for (int i = 0; i < titles.length; i++) {
+        for (int i = 0; i < titles.length&&i<image.length; i++) {
             NavDrawerItem navItem = new NavDrawerItem();
             navItem.setTitle(titles[i]);
+            navItem.setImage(image[i]);
             data.add(navItem);
         }
         return data;
@@ -77,7 +80,7 @@ public class FragmentDrawer extends Fragment {
 
         txtName=(TextView) layout.findViewById(R.id.userName);
         sh = getActivity().getSharedPreferences(mypreference, Context.MODE_PRIVATE);
-        name = sh.getString("userName", null);
+        name = sh.getString("userName", "");
         txtName.setText(name);
         recyclerView = (RecyclerView) layout.findViewById(R.id.drawerList);
         adapter = new NavigationDrawerAdapter(getActivity(), getData());

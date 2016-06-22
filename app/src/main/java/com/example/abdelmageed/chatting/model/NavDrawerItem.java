@@ -6,6 +6,7 @@ package com.example.abdelmageed.chatting.model;
 public class NavDrawerItem {
     private boolean showNotify;
     private String title;
+    private int image;
 
 
 
@@ -17,6 +18,7 @@ public class NavDrawerItem {
         this.showNotify = showNotify;
         this.title = title;
     }
+
 
     public boolean isShowNotify() {
         return showNotify;
@@ -34,4 +36,11 @@ public class NavDrawerItem {
         this.title = title;
     }
 
+    public int getImage() {
+        return image;
+    }
+
+    public void setImage(int image) {
+        this.image = image;
+    }
 }
