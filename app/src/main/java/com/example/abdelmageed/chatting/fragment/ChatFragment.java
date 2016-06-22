@@ -138,48 +138,48 @@ public class ChatFragment extends Fragment {
         }
     }
 
-//    public void getContact(){
-//        StringRequest stringRequest=new StringRequest(Request.Method.POST, "http://emtyazna.com/mohamed/chating/index.php/activities/getContacts", new Response.Listener<String>() {
-//            @Override
-//            public void onResponse(String response) {
-//
-//                getFriend(response);
-//            }
-//        }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//
-//            }
-//        }) {
-//            @Override
-//            protected Map<String, String> getParams() throws AuthFailureError {
-//                Map<String, String> param = new HashMap<>();
-//                param.put("userId", userId);
-//                param.put("userLang", userLong);
-//                param.put("userLat", userLat);
-//                return param;
-//            }
-//        };
-//        RequestQueue requestQueue=Volley.newRequestQueue(getActivity());
-//        requestQueue.add(stringRequest);
-//    }
-//
-//    public void getFriend(String content){
-//        try {
-//            JSONArray array = new JSONArray(content);
-//            ArrayList<Contact> tripList = new ArrayList<>();
-//            for (int i = 0; i < array.length(); i++) {
-//                JSONObject object = array.getJSONObject(i);
-//                Contact contact = new Contact();
-//                contact.setUserName(object.getString("userName"));
-//                contact.setUserID(object.getString("id"));
-//
-//                tripList.add(contact);
-//            }
-//
-//            adapter.add(tripList);
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-//    }
+    public void getContact(){
+        StringRequest stringRequest=new StringRequest(Request.Method.POST, "http://emtyazna.com/mohamed/chating/index.php/activities/getContacts", new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                getFriend(response);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> param = new HashMap<>();
+                param.put("userId", userId);
+                param.put("userLang", userLong);
+                param.put("userLat", userLat);
+                return param;
+            }
+        };
+        RequestQueue requestQueue=Volley.newRequestQueue(getActivity());
+        requestQueue.add(stringRequest);
+    }
+
+    public void getFriend(String content){
+        try {
+            JSONArray array = new JSONArray(content);
+            ArrayList<Contact> tripList = new ArrayList<>();
+            for (int i = 0; i < array.length(); i++) {
+                JSONObject object = array.getJSONObject(i);
+                Contact contact = new Contact();
+                contact.setUserName(object.getString("userName"));
+                contact.setUserID(object.getString("id"));
+
+                tripList.add(contact);
+            }
+
+            adapter.add(tripList);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
 }
