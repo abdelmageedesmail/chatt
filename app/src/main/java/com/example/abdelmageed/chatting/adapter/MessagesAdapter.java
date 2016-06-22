@@ -8,6 +8,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.abdelmageed.chatting.R;
@@ -37,13 +38,22 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.MyHold
 
     @Override
     public void onBindViewHolder(MyHolder holder, final int position) {
-        SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences sh = context.getSharedPreferences("Mypref",Context.MODE_PRIVATE);
         String UserId = sh.getString("userId", "");
         holder.tv_message.setText(messages.get(position).getMessage());
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.FILL_PARENT);
+        params.weight = 1.0f;
+
+
         if (messages.get(position).getMessageFrom().equals(UserId)) {
-            holder.tv_message.setGravity(Gravity.LEFT);
-        } else
-            holder.tv_message.setGravity(Gravity.RIGHT);
+            params.gravity = Gravity.LEFT;
+            params.leftMargin=10;
+        } else if (!messages.get(position).getMessageFrom().equals(UserId)) {
+            params.gravity = Gravity.RIGHT;
+            params.rightMargin=10;
+        }
+
+        holder.tv_message.setLayoutParams(params);
 
 
     }
