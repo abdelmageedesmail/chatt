@@ -47,11 +47,11 @@ public class Login_Activity extends AppCompatActivity {
         TextView header = (TextView) findViewById(R.id.signin_header);
         utils.FonTChange(header);
         logIn = (Button) findViewById(R.id.buutonLogin);
-        ImageView img = (ImageView) findViewById(R.id.imagelogin);
+       // ImageView img = (ImageView) findViewById(R.id.imagelogin);
         txtuserEmail = (EditText) findViewById(R.id.TextEmail);
         txtUserPassword = (EditText) findViewById(R.id.TextPassword);
         pref = getApplicationContext().getSharedPreferences("Mypref", MODE_PRIVATE);
-        img.setImageResource(R.mipmap.icon);
+      //  img.setImageResource(R.mipmap.icon);
         logIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
