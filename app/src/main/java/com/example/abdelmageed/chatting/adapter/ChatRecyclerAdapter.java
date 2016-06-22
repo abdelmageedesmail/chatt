@@ -51,6 +51,8 @@ public class ChatRecyclerAdapter extends RecyclerView.Adapter<ChatRecyclerAdapte
             }
         });
 
+        holder.tv_message.setText(contacts.get(position).getMessage());
+
 
     }
 
@@ -69,12 +71,13 @@ public class ChatRecyclerAdapter extends RecyclerView.Adapter<ChatRecyclerAdapte
 
     class MyHolder extends RecyclerView.ViewHolder {
         View line;
-        TextView tv_name;
+        TextView tv_name, tv_message;
 
         public MyHolder(View itemView) {
             super(itemView);
             line = itemView.findViewById(R.id.line);
             tv_name = (TextView) itemView.findViewById(R.id.tv_usr_name);
+            tv_message = (TextView) itemView.findViewById(R.id.tv_last_message);
 
 
         }
