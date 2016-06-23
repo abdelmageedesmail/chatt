@@ -60,6 +60,7 @@ public class RegistrationServices extends IntentService {
             e.printStackTrace();
         }
     }
+    
 
 
 //    public void sendTokenToServer(final String token) {
