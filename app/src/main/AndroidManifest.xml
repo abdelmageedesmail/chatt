@@ -92,7 +92,11 @@
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
             </intent-filter>
         </service>
-        <service android:name=".GCM.RegistrationServices" />
+        <service android:name=".GCM.RegistrationServices">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            </intent-filter>
+        </service>
 
     </application>
 
