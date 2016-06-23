@@ -20,7 +20,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="Fined Friend"
-                android:textSize="25dp"
+                android:textSize="30sp"
                 android:textStyle="bold" />
         </FrameLayout>
 
@@ -58,19 +58,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:paddingTop="7dp">
+                android:paddingTop="20dp">
 
                 <TextView
                     android:id="@+id/friendName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:layout_gravity="center_vertical"/>
 
                 <TextView
                     android:id="@+id/txtColleauge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="16sp" />
+                    android:textSize="18sp" />
             </LinearLayout>
 
             <ImageView

@@ -25,6 +25,7 @@ public class Registeration extends AppCompatActivity {
     RequestQueue requestQueue;
     String userID;
     SharedPreferences pref;
+   public  static AppCompatActivity activity;
 
     public static String url = "http://emtyazna.com/mohamed/chating/index.php/activities/registerUser";
 
@@ -34,6 +35,7 @@ public class Registeration extends AppCompatActivity {
         setContentView(R.layout.activity_registeration);
         Utils utils = new Utils(this, "JF_Flat_regular.ttf");
         TextView header = (TextView) findViewById(R.id.sign_up_header);
+        activity=this;
         utils.FonTChange(header);
         txtUserName = (EditText) findViewById(R.id.editTextName);
         txtUserPassword = (EditText) findViewById(R.id.editpassword);

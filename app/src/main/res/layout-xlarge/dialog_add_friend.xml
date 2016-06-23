@@ -20,7 +20,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="Fined Friend"
-                android:textSize="25dp"
+                android:textSize="40sp"
                 android:textStyle="bold" />
         </FrameLayout>
 
@@ -75,8 +75,8 @@
 
             <ImageView
                 android:id="@+id/startConversation"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
                 android:layout_gravity="right"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/select"

@@ -14,6 +14,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.abdelmageed.chatting.activities.Login_Activity;
+import com.example.abdelmageed.chatting.activities.Registeration;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 import com.google.android.gms.iid.InstanceID;
 
@@ -110,6 +111,7 @@ public class RegistrationServices extends IntentService {
 
                 Intent i = new Intent(RegistrationServices.this, Login_Activity.class);
                 i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                Registeration.activity.finish();
 
                 startActivity(i);
             }
