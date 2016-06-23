@@ -10,7 +10,7 @@
         android:id="@+id/linearLayout"
         android:layout_width="280dp"
         android:layout_height="140dp"
-        android:background="@color/navigationcolor"
+        android:background="@color/colorPrimaryDark"
         android:orientation="vertical"
         android:weightSum="2">
 
@@ -18,7 +18,7 @@
             android:layout_width="280dp"
             android:layout_height="120dp"
             android:layout_marginTop="12dp"
-            android:background="@drawable/bgtop">
+            android:background="@color/framecolor">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -33,7 +33,6 @@
                     android:layout_marginLeft="16dp"
                     android:layout_marginTop="18dp"
                     android:src="@drawable/profilepicture"
-
                     />
 
                 <TextView
@@ -59,7 +58,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignRight="@+id/linearLayout"
         android:layout_below="@+id/linearLayout"
-        android:background="@color/navigationcolor" />
+        android:background="@color/colorPrimaryDark" />
 
 
 </RelativeLayout>

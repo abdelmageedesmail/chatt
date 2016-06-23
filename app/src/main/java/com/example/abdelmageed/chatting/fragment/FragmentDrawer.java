@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.abdelmageed.chatting.GCM.RegistrationServices;
 import com.example.abdelmageed.chatting.R;
 import com.example.abdelmageed.chatting.adapter.NavigationDrawerAdapter;
 import com.example.abdelmageed.chatting.model.NavDrawerItem;
@@ -80,7 +81,7 @@ public class FragmentDrawer extends Fragment {
 
         txtName=(TextView) layout.findViewById(R.id.userName);
         sh = getActivity().getSharedPreferences(mypreference, Context.MODE_PRIVATE);
-        name = sh.getString("userName", "");
+        name = sh.getString("userName",null);
         txtName.setText(name);
         recyclerView = (RecyclerView) layout.findViewById(R.id.drawerList);
         adapter = new NavigationDrawerAdapter(getActivity(), getData());
