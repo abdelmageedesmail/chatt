@@ -60,7 +60,6 @@ public class RegistrationServices extends IntentService {
             e.printStackTrace();
         }
     }
-    
 
 
 //    public void sendTokenToServer(final String token) {
@@ -97,10 +96,7 @@ public class RegistrationServices extends IntentService {
 
     public void uploadData(final String token) {
         String url = "http://emtyazna.com/mohamed/chating/index.php/activities/registerUser";
-
-        Registeration.progressDialog.setIndeterminate(true);
-        Registeration.progressDialog.setMessage("Uploading...");
-        Registeration.progressDialog.show();
+        
         stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -112,9 +108,7 @@ public class RegistrationServices extends IntentService {
                     e.printStackTrace();
                 }
 
-                Registeration.progressDialog.dismiss();
 
-                Registeration.progressDialog.hide();
                 Intent i = new Intent(RegistrationServices.this, Login_Activity.class);
                 i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
