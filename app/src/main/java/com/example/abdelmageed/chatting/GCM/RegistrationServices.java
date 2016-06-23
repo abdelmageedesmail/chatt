@@ -14,7 +14,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.abdelmageed.chatting.activities.Login_Activity;
-import com.example.abdelmageed.chatting.activities.Registeration;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 import com.google.android.gms.iid.InstanceID;
 
@@ -96,7 +95,7 @@ public class RegistrationServices extends IntentService {
 
     public void uploadData(final String token) {
         String url = "http://emtyazna.com/mohamed/chating/index.php/activities/registerUser";
-        
+
         stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -117,7 +116,7 @@ public class RegistrationServices extends IntentService {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Registeration.progressDialog.setMessage("Error ...");
+
             }
         }) {
             @Override

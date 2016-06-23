@@ -25,7 +25,6 @@ public class Registeration extends AppCompatActivity {
     RequestQueue requestQueue;
     String userID;
     SharedPreferences pref;
-    public static ProgressDialog progressDialog;
 
     public static String url = "http://emtyazna.com/mohamed/chating/index.php/activities/registerUser";
 
@@ -34,7 +33,6 @@ public class Registeration extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registeration);
         Utils utils = new Utils(this, "JF_Flat_regular.ttf");
-        progressDialog = new ProgressDialog(this);
         TextView header = (TextView) findViewById(R.id.sign_up_header);
         utils.FonTChange(header);
         txtUserName = (EditText) findViewById(R.id.editTextName);
@@ -60,6 +58,10 @@ public class Registeration extends AppCompatActivity {
                     i.putExtra("id", id);
                     i.putExtra("password", password);
                     i.putExtra("personalId", personalId);
+                    final ProgressDialog progressDialog = new ProgressDialog(Registeration.this);
+                    progressDialog.setIndeterminate(true);
+                    progressDialog.setMessage("Uploading...");
+                    progressDialog.show();
                     startService(i);
 
                 }
