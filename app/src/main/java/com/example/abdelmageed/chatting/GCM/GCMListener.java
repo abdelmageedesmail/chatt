@@ -10,7 +10,7 @@ import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 
 import com.example.abdelmageed.chatting.R;
-import com.example.abdelmageed.chatting.activities.Registeration;
+import com.example.abdelmageed.chatting.activities.ChatPage;
 import com.google.android.gms.gcm.GcmListenerService;
 
 
@@ -19,7 +19,9 @@ public class GCMListener extends GcmListenerService {
     public void onMessageReceived(String from, Bundle data) {
         super.onMessageReceived(from, data);
         String message = data.getString("message");
-        sendNotification(message);
+        String from_user = data.getString("fromUserId");
+        String to = data.getString("fromUserName");
+        sendNotification(message, from_user, to);
         updateMyActivity(this, message);
     }
 
@@ -34,9 +36,11 @@ public class GCMListener extends GcmListenerService {
         context.sendBroadcast(intent);
     }
 
-    private void sendNotification(String message) {
+    private void sendNotification(String friend_name, String friend_id, String message) {
 
-        Intent intent = new Intent(this, Registeration.class);
+        Intent intent = new Intent(this, ChatPage.class);
+        intent.putExtra("friendId", friend_id);
+        intent.putExtra("friendName", message);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent,
@@ -47,7 +51,7 @@ public class GCMListener extends GcmListenerService {
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.mipmap.icon)
                 .setContentTitle("Message")
-                .setContentText(message)
+                .setContentText(friend_name)
                 .setAutoCancel(true)
                 .setSound(defaultSoundUri)
                 .setContentIntent(pendingIntent);

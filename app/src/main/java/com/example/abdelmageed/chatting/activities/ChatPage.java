@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -67,7 +68,7 @@ public class ChatPage extends AppCompatActivity {
 
         utils.AwSomeFont(imgbtnSend);
         adapter = new MessagesAdapter(this);
-      messages_recycler = (RecyclerView) findViewById(R.id.chat_page);
+        messages_recycler = (RecyclerView) findViewById(R.id.chat_page);
         messages_recycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         messages_recycler.setAdapter(adapter);
 
@@ -105,9 +106,8 @@ public class ChatPage extends AppCompatActivity {
         public void onReceive(Context context, Intent intent) {
 
             // Extract data included in the Intent
-            String message = intent.getStringExtra("message");
+           message = intent.getStringExtra("message");
             getMessages();
-
             //do other stuff here
         }
     };
@@ -184,8 +184,8 @@ public class ChatPage extends AppCompatActivity {
                 adapter.add(message);
 
             }
-            if(adapter.getItemCount()>0)
-                messages_recycler.smoothScrollToPosition((adapter.getItemCount())-1);
+            if (adapter.getItemCount() > 0)
+                messages_recycler.smoothScrollToPosition((adapter.getItemCount()) - 1);
 
         } catch (JSONException e) {
             e.printStackTrace();

@@ -68,6 +68,7 @@ public class ChatFragment extends Fragment {
 
             // Extract data included in the Intent
             String message = intent.getStringExtra("message");
+
             refresh();
 
             //do other stuff here
