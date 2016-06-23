@@ -1,7 +1,10 @@
 package com.example.abdelmageed.chatting.fragment;
 
 import android.app.ProgressDialog;
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -53,6 +56,24 @@ public class ChatFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        getActivity().unregisterReceiver(mMessageReceiver);
+    }
+
+    private BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+
+            // Extract data included in the Intent
+            String message = intent.getStringExtra("message");
+            refresh();
+
+            //do other stuff here
+        }
+    };
+
 
     private void init(View view) {
 
@@ -76,6 +97,7 @@ public class ChatFragment extends Fragment {
     public void onResume() {
         super.onResume();
         refresh();
+        getActivity().registerReceiver(mMessageReceiver, new IntentFilter("refresh"));
     }
 
     private void refresh() {
