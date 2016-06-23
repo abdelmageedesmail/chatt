@@ -2,7 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:id="@+id/linear"
+    android:layout_marginTop="20dp"
+    android:background="@drawable/select">
 
     <TextView
         android:id="@+id/tv_usr_name"
@@ -11,7 +14,8 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="10dp"
         android:textColor="#000"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        />
 
     <TextView
         android:id="@+id/tv_last_message"
@@ -22,11 +26,5 @@
         android:textColor="@android:color/darker_gray"
         android:textSize="14sp" />
 
-    <View
-        android:id="@+id/line"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="10dp"
-        android:background="#315594" />
 
 </LinearLayout>

@@ -6,9 +6,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.abdelmageed.chatting.R;
+import com.example.abdelmageed.chatting.Utils.Utils;
 import com.example.abdelmageed.chatting.activities.ChatPage;
 import com.example.abdelmageed.chatting.model.Contact;
 
@@ -36,30 +38,19 @@ public class ChatRecyclerAdapter extends RecyclerView.Adapter<ChatRecyclerAdapte
 
     @Override
     public void onBindViewHolder(MyHolder holder, final int position) {
-        if (position < getItemCount() - 1)
-            holder.line.setVisibility(View.VISIBLE);
-        else
-            holder.line.setVisibility(View.INVISIBLE);
+
         holder.tv_name.setText(contacts.get(position).getUserName());
-        holder.tv_name.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(context, ChatPage.class);
-                i.putExtra("friendId", contacts.get(position).getUserID());
-                i.putExtra("friendName", contacts.get(position).getUserName());
-                context.startActivity(i);
-            }
-        });
 
         holder.tv_message.setText(contacts.get(position).getMessage());
-        holder.tv_message.setOnClickListener(new View.OnClickListener() {
+
+
+        holder.linear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(context, ChatPage.class);
                 i.putExtra("friendId", contacts.get(position).getUserID());
                 i.putExtra("friendName", contacts.get(position).getUserName());
                 context.startActivity(i);
-
             }
         });
 
@@ -80,14 +71,16 @@ public class ChatRecyclerAdapter extends RecyclerView.Adapter<ChatRecyclerAdapte
     }
 
     class MyHolder extends RecyclerView.ViewHolder {
-        View line;
+        LinearLayout linear;
         TextView tv_name, tv_message;
 
         public MyHolder(View itemView) {
             super(itemView);
-            line = itemView.findViewById(R.id.line);
             tv_name = (TextView) itemView.findViewById(R.id.tv_usr_name);
             tv_message = (TextView) itemView.findViewById(R.id.tv_last_message);
+            linear = (LinearLayout) itemView.findViewById(R.id.linear);
+            Utils utils = new Utils(context, "JF_Flat_regular.ttf");
+            utils.FonTChange(tv_name);
 
 
         }

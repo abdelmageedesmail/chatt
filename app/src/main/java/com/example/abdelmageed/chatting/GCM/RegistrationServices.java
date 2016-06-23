@@ -14,6 +14,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.abdelmageed.chatting.activities.Login_Activity;
+import com.example.abdelmageed.chatting.activities.Registeration;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 import com.google.android.gms.iid.InstanceID;
 
@@ -101,17 +102,23 @@ public class RegistrationServices extends IntentService {
             public void onResponse(String response) {
                 try {
                     JSONObject object = new JSONObject(response);
-                    userID = object.getString("userId");
-                    Toast.makeText(RegistrationServices.this, userID, Toast.LENGTH_SHORT).show();
+                    if (object.keys().next().equals("error")) {
+
+                        Toast.makeText(RegistrationServices.this, "Check Inputs may be the user is aleady exist", Toast.LENGTH_LONG).show();
+
+                    } else {
+
+                        userID = object.getString("userId");
+                        Intent i = new Intent(RegistrationServices.this, Login_Activity.class);
+                        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        Registeration.activity.finish();
+                        startActivity(i);
+                    }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
 
 
-                Intent i = new Intent(RegistrationServices.this, Login_Activity.class);
-                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-                startActivity(i);
             }
         }, new Response.ErrorListener() {
             @Override

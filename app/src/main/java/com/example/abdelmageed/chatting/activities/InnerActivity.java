@@ -3,7 +3,6 @@ package com.example.abdelmageed.chatting.activities;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -12,7 +11,6 @@ import android.view.View;
 import com.example.abdelmageed.chatting.R;
 import com.example.abdelmageed.chatting.fragment.ChatFragment;
 import com.example.abdelmageed.chatting.fragment.FragmentDrawer;
-
 
 
 public class InnerActivity extends AppCompatActivity implements FragmentDrawer.FragmentDrawerListener {
@@ -52,9 +50,10 @@ public class InnerActivity extends AppCompatActivity implements FragmentDrawer.F
                 SharedPreferences sh = getApplicationContext().getSharedPreferences("Mypref", MODE_PRIVATE);
                 sh.edit().putString("userId", "").commit();
                 startActivity(new Intent(InnerActivity.this, Login_Activity.class));
+                finish();
                 break;
             case 3:
-                startActivity(new Intent(InnerActivity.this,Login_Activity.class));
+                startActivity(new Intent(InnerActivity.this, Login_Activity.class));
                 finish();
             default:
                 break;

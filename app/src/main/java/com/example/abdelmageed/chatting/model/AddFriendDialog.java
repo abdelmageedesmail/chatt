@@ -73,6 +73,7 @@ public class AddFriendDialog extends Dialog {
                 addFriend();
             }
         });
+
     }
 
 
