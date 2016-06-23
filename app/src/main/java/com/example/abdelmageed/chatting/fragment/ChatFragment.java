@@ -12,8 +12,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -36,13 +34,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-
 public class ChatFragment extends Fragment {
 
     ChatRecyclerAdapter adapter;
     SharedPreferences sh;
     String userId, userLat, userLong;
-    FloatingActionButton fab;
 
     @Nullable
     @Override
@@ -50,8 +46,8 @@ public class ChatFragment extends Fragment {
         View view = inflater.inflate(R.layout.chatfragment, container, false);
         sh = getActivity().getApplicationContext().getSharedPreferences("Mypref", Context.MODE_PRIVATE);
         userId = sh.getString("userId", "");
-        userLat = sh.getString("latUser", "");
-        userLong = sh.getString("lonUser", "");
+//        userLat = sh.getString("latUser", "");
+//        userLong = sh.getString("lonUser", "");
         init(view);
 
         return view;
@@ -143,8 +139,8 @@ public class ChatFragment extends Fragment {
         }
     }
 
-    public void getContact(){
-        StringRequest stringRequest=new StringRequest(Request.Method.POST, "http://emtyazna.com/mohamed/chating/index.php/activities/getContacts", new Response.Listener<String>() {
+    public void getContact() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://emtyazna.com/mohamed/chating/index.php/activities/getContacts", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 
@@ -165,11 +161,11 @@ public class ChatFragment extends Fragment {
                 return param;
             }
         };
-        RequestQueue requestQueue=Volley.newRequestQueue(getActivity());
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
         requestQueue.add(stringRequest);
     }
 
-    public void getFriend(String content){
+    public void getFriend(String content) {
         try {
             JSONArray array = new JSONArray(content);
             ArrayList<Contact> tripList = new ArrayList<>();

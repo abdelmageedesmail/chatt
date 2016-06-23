@@ -11,22 +11,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.example.abdelmageed.chatting.GCM.RegistrationServices;
 import com.example.abdelmageed.chatting.R;
 import com.example.abdelmageed.chatting.Utils.Utils;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class Registeration extends AppCompatActivity {
 
@@ -36,6 +25,7 @@ public class Registeration extends AppCompatActivity {
     RequestQueue requestQueue;
     String userID;
     SharedPreferences pref;
+    public static ProgressDialog progressDialog;
 
     public static String url = "http://emtyazna.com/mohamed/chating/index.php/activities/registerUser";
 
@@ -44,7 +34,7 @@ public class Registeration extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registeration);
         Utils utils = new Utils(this, "JF_Flat_regular.ttf");
-
+        progressDialog = new ProgressDialog(this);
         TextView header = (TextView) findViewById(R.id.sign_up_header);
         utils.FonTChange(header);
         txtUserName = (EditText) findViewById(R.id.editTextName);
@@ -63,59 +53,70 @@ public class Registeration extends AppCompatActivity {
                 String password = txtUserPassword.getText().toString();
                 if (name.equals("") || personalId.equals("") || id.equals("") || faculity.equals("") || password.equals("")) {
                     Toast.makeText(Registeration.this, "Please fill empty fields", Toast.LENGTH_SHORT).show();
-                } else
-                    uploadData();
+                } else {
+                    // uploadData();
+                    Intent i = new Intent(Registeration.this, RegistrationServices.class);
+                    i.putExtra("name", name);
+                    i.putExtra("id", id);
+                    i.putExtra("password", password);
+                    i.putExtra("personalId", personalId);
+                    startService(i);
 
+                }
             }
+
         });
     }
-
-    public void uploadData() {
-        final ProgressDialog progressDialog = new ProgressDialog(Registeration.this);
-        progressDialog.setIndeterminate(true);
-        progressDialog.setMessage("Uploading...");
-        progressDialog.show();
-        stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                try {
-                    JSONObject object = new JSONObject(response);
-                    userID = object.getString("userId");
-                    Toast.makeText(Registeration.this, userID, Toast.LENGTH_SHORT).show();
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-                progressDialog.dismiss();
-
-                progressDialog.hide();
-                startService(new Intent(Registeration.this, RegistrationServices.class));
-                startActivity(new Intent(Registeration.this, Login_Activity.class));
-                finish();
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                progressDialog.setMessage("Error Connection...");
-            }
-        }) {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                HashMap<String, String> params = new HashMap<String, String>();
-                String name = txtUserName.getText().toString();
-                String personalId = txtPersonalID.getText().toString();
-                String id = ColleagueID.getText().toString();
-                String faculity = txtUserFaculity.getText().toString();
-                String password = txtUserPassword.getText().toString();
-                params.put("userCollegeId", id);
-                params.put("personId", personalId);
-                params.put("userPassword", password);
-                params.put("userName", name);
-                return params;
-
-            }
-        };
-        requestQueue = Volley.newRequestQueue(Registeration.this);
-        requestQueue.add(stringRequest);
-    }
 }
+
+//    public void uploadData() {
+//        final ProgressDialog progressDialog = new ProgressDialog(Registeration.this);
+//        progressDialog.setIndeterminate(true);
+//        progressDialog.setMessage("Uploading...");
+//        progressDialog.show();
+//        stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+//            @Override
+//            public void onResponse(String response) {
+//                try {
+//                    JSONObject object = new JSONObject(response);
+//                    userID = object.getString("userId");
+//                    Toast.makeText(Registeration.this, userID, Toast.LENGTH_SHORT).show();
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
+//
+//                progressDialog.dismiss();
+//
+//                progressDialog.hide();
+//
+//                startActivity(new Intent(Registeration.this, Login_Activity.class));
+//                finish();
+//            }
+//        }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//                progressDialog.setMessage("Error Connection...");
+//            }
+//        }) {
+//            @Override
+//            protected Map<String, String> getParams() throws AuthFailureError {
+//                HashMap<String, String> params = new HashMap<String, String>();
+//                String name = txtUserName.getText().toString();
+//                String personalId = txtPersonalID.getText().toString();
+//                String id = ColleagueID.getText().toString();
+//                String faculity = txtUserFaculity.getText().toString();
+//                String password = txtUserPassword.getText().toString();
+//                params.put("userCollegeId", id);
+//                params.put("personId", personalId);
+//                params.put("userPassword", password);
+//                params.put("userName", name);
+//                return params;
+//
+//            }
+//        };
+//        requestQueue = Volley.newRequestQueue(Registeration.this);
+//        requestQueue.add(stringRequest);
+//    }
+
+
+
