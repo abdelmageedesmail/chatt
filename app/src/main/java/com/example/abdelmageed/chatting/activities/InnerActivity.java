@@ -3,6 +3,8 @@ package com.example.abdelmageed.chatting.activities;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -11,6 +13,7 @@ import android.view.View;
 import com.example.abdelmageed.chatting.R;
 import com.example.abdelmageed.chatting.fragment.ChatFragment;
 import com.example.abdelmageed.chatting.fragment.FragmentDrawer;
+import com.example.abdelmageed.chatting.fragment.RssFragment;
 
 
 public class InnerActivity extends AppCompatActivity implements FragmentDrawer.FragmentDrawerListener {
@@ -53,6 +56,13 @@ public class InnerActivity extends AppCompatActivity implements FragmentDrawer.F
                 finish();
                 break;
             case 3:
+                    Fragment fragment = new RssFragment();
+                    FragmentManager manager = getSupportFragmentManager();
+                    manager.beginTransaction()
+                            .replace(R.id.container, fragment)
+                            .commit();
+                break;
+            case 4:
                 startActivity(new Intent(InnerActivity.this, Login_Activity.class));
                 finish();
             default:
@@ -62,27 +72,9 @@ public class InnerActivity extends AppCompatActivity implements FragmentDrawer.F
     }
 
 
-//    public static class MyFragment extends Fragment {
-//        TextView txt;
-//
-//        public static MyFragment getInstance(int position) {
-//            MyFragment fragment = new MyFragment();
-//            Bundle args = new Bundle();
-//            args.putInt("position", position);
-//            fragment.setArguments(args);
-//            return fragment;
-//        }
-//
-//        @Nullable
-//        @Override
-//        public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-//            View view = inflater.inflate(R.layout.fragmentapp, container, false);
-//            txt = (TextView) view.findViewById(R.id.position);
-//            Bundle b = getArguments();
-//            if (b != null) {
-//                txt.setText("page Selected is" + b.getInt("position"));
-//            }
-//            return view;
-//        }
-//    }
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+            outState.putBoolean("fragment_added", true);
+    }
 }

@@ -97,6 +97,7 @@
             </intent-filter>
         </service>
 
+        <service android:name=".GCM.RssService"/>
     </application>
 
 </manifest>

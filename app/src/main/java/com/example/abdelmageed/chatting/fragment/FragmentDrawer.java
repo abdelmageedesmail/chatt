@@ -51,8 +51,8 @@ public class FragmentDrawer extends Fragment {
     public static List<NavDrawerItem> getData() {
         List<NavDrawerItem> data = new ArrayList<>();
 
-        int image[]={R.mipmap.home,R.mipmap.location,R.mipmap.logout};
-        String titles[] = {"Home", "Location", "Log Out"};
+        int image[]={R.mipmap.home,R.mipmap.location,R.drawable.news,R.mipmap.logout};
+        String titles[] = {"Home", "Location","Latest news" ,"Log Out"};
         // preparing navigation drawer items
         for (int i = 0; i < titles.length&&i<image.length; i++) {
             NavDrawerItem navItem = new NavDrawerItem();

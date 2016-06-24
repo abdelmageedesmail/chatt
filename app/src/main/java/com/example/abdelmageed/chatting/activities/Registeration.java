@@ -17,6 +17,9 @@ import com.example.abdelmageed.chatting.GCM.RegistrationServices;
 import com.example.abdelmageed.chatting.R;
 import com.example.abdelmageed.chatting.Utils.Utils;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class Registeration extends AppCompatActivity {
 
     EditText txtUserName, txtUserPassword, txtUserFaculity, txtPersonalID, ColleagueID;
@@ -25,8 +28,10 @@ public class Registeration extends AppCompatActivity {
     RequestQueue requestQueue;
     String userID;
     SharedPreferences pref;
+    public static String [] colleageId,personal;
+    public static ArrayList<String> arr;
    public  static AppCompatActivity activity;
-
+    public static int i;
     public static String url = "http://emtyazna.com/mohamed/chating/index.php/activities/registerUser";
 
     @Override
@@ -43,6 +48,9 @@ public class Registeration extends AppCompatActivity {
         txtPersonalID = (EditText) findViewById(R.id.editTextpersonalId);
         ColleagueID = (EditText) findViewById(R.id.editTextId);
         register = (Button) findViewById(R.id.buutonRegister);
+
+        colleageId= new String[]{"123", "123456789", "12345","123456", "1234567","1000000017"};
+        personal=new String[]{"1234567891","123456789852","123456789741","123456789963","1478529631258"};
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -51,9 +59,15 @@ public class Registeration extends AppCompatActivity {
                 String id = ColleagueID.getText().toString();
                 String faculity = txtUserFaculity.getText().toString();
                 String password = txtUserPassword.getText().toString();
+
                 if (name.equals("") || personalId.equals("") || id.equals("") || faculity.equals("") || password.equals("")) {
                     Toast.makeText(Registeration.this, "Please fill empty fields", Toast.LENGTH_SHORT).show();
-                } else {
+                }
+
+                else if (!colleageId.equals(id)||!personal.equals(personalId)){
+                    Toast.makeText(Registeration.this,"Ther is not student with this id",Toast.LENGTH_SHORT).show();
+                }
+                else {
                     // uploadData();
                     Intent i = new Intent(Registeration.this, RegistrationServices.class);
                     i.putExtra("name", name);
@@ -71,6 +85,7 @@ public class Registeration extends AppCompatActivity {
 
         });
     }
+
 }
 
 //    public void uploadData() {
