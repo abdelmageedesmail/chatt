@@ -97,7 +97,7 @@ public class ChatFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        refresh();
+        refreshAgain();
         getActivity().registerReceiver(mMessageReceiver, new IntentFilter("refresh"));
     }
 
@@ -121,6 +121,40 @@ public class ChatFragment extends Fragment {
             @Override
             public void onErrorResponse(VolleyError error) {
                 progressDialog.setMessage("Error connection...");
+
+            }
+        }
+        ) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String, String> params = new HashMap<String, String>();
+                if (userId != null)
+                    params.put("userId", userId);
+
+                return params;
+            }
+        };
+
+        queue.add(stringRequest);
+
+    }
+
+    void refreshAgain() {
+        final ProgressDialog progressDialog = new ProgressDialog(getActivity());
+        RequestQueue queue = Volley.newRequestQueue(getActivity());
+        String url = "http://emtyazna.com/mohamed/chating/index.php/activities/getMessages";
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        if (response != null)
+                            getChat(response);
+                        progressDialog.dismiss();
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
 
             }
         }
