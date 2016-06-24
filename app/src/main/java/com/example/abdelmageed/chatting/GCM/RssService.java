@@ -45,7 +45,7 @@ public class RssService extends IntentService {
         }
         Bundle bundle = new Bundle();
         bundle.putSerializable(ITEMS, (Serializable) rssItems);
-        ResultReceiver receiver = intent.getParcelableExtra(RECEIVER);
+        android.os.ResultReceiver receiver = intent.getParcelableExtra(RECEIVER);
         receiver.send(0, bundle);
     }
 

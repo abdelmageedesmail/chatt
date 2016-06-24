@@ -49,13 +49,13 @@ public class InnerActivity extends AppCompatActivity implements FragmentDrawer.F
                 startActivity(new Intent(InnerActivity.this, MapsActivity.class));
                 break;
 
-            case 2:
+            case 3:
                 SharedPreferences sh = getApplicationContext().getSharedPreferences("Mypref", MODE_PRIVATE);
                 sh.edit().putString("userId", "").commit();
                 startActivity(new Intent(InnerActivity.this, Login_Activity.class));
                 finish();
                 break;
-            case 3:
+            case 2:
                     Fragment fragment = new RssFragment();
                     FragmentManager manager = getSupportFragmentManager();
                     manager.beginTransaction()
