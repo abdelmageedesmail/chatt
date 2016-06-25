@@ -1,8 +1,6 @@
 package com.example.abdelmageed.chatting.Utils;
 
-/**
- * Created by Amer Elsayed on 05/06/2016.
- */
+
 public class Fonts {
     public static String tahomabd="tahomabd.ttf";
     public static String tahoma="tahoma.ttf";

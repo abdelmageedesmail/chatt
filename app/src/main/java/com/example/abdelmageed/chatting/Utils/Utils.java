@@ -15,9 +15,7 @@ import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
 
-/**
- * Created by Amer Elsayed.
- */
+
 public class Utils {
 
     /*http://fontawesome.io/cheatsheet/*/

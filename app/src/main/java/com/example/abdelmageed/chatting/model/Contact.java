@@ -1,8 +1,6 @@
 package com.example.abdelmageed.chatting.model;
 
-/**
- * Created by abdelmageed on 14/06/16.
- */
+
 public class Contact {
     public String userName;
     private String message;

@@ -6,9 +6,7 @@ import android.preference.PreferenceManager;
 
 import com.google.android.gms.iid.InstanceIDListenerService;
 
-/**
- * Created by abdelmageed on 20/06/16.
- */
+
 public class GCMInstacneIDListener extends InstanceIDListenerService {
 
     SharedPreferences preferences;

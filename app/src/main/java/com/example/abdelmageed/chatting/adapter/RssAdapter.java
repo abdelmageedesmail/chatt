@@ -12,9 +12,7 @@ import com.example.abdelmageed.chatting.model.RssItem;
 
 import java.util.List;
 
-/**
- * Created by abdelmageed on 24/06/16.
- */
+
 public class RssAdapter extends BaseAdapter {
 
     private final List<RssItem> items;

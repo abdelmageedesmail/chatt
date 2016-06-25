@@ -1,8 +1,6 @@
 package com.example.abdelmageed.chatting.model;
 
-/**
- * Created by abdelmageed on 12/06/16.
- */
+
 public class NavDrawerItem {
     private boolean showNotify;
     private String title;

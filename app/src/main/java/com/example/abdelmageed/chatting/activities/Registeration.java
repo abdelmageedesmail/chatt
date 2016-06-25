@@ -24,13 +24,10 @@ public class Registeration extends AppCompatActivity {
 
     EditText txtUserName, txtUserPassword, txtUserFaculity, txtPersonalID, ColleagueID;
     Button register;
-    StringRequest stringRequest;
-    RequestQueue requestQueue;
-    String userID;
-    SharedPreferences pref;
-    public static String [] colleageId,personal;
-    public static ArrayList<String> arr;
-   public  static AppCompatActivity activity;
+
+    public static ArrayList<String> arrColleageId;
+    public static ArrayList<String> arrPersonalId;
+    public  static AppCompatActivity activity;
     public static int i;
     public static String url = "http://emtyazna.com/mohamed/chating/index.php/activities/registerUser";
 
@@ -49,13 +46,36 @@ public class Registeration extends AppCompatActivity {
         ColleagueID = (EditText) findViewById(R.id.editTextId);
         register = (Button) findViewById(R.id.buutonRegister);
 
-        colleageId= new String[]{"123", "123456789", "12345","123456", "1234567","1000000017"};
-        personal=new String[]{"1234567891","123456789852","123456789741","123456789963","1478529631258"};
+        /**
+         * Colooage id
+         */
+        arrColleageId=new ArrayList<>();
+        arrColleageId.add("123");
+        arrColleageId.add("123456789");
+        arrColleageId.add("12345");
+        arrColleageId.add("123456");
+        arrColleageId.add("1234567");
+        arrColleageId.add("1000000017");
+
+        /**
+         * personal id
+         */
+        arrPersonalId=new ArrayList<>();
+        arrPersonalId.add("1234567891");
+        arrPersonalId.add("123456789852");
+        arrPersonalId.add("123456789741");
+        arrPersonalId.add("123456789741");
+        arrPersonalId.add("123456789963");
+        arrPersonalId.add("1478529631258");
+
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //get data from edit text
+
                 String name = txtUserName.getText().toString();
                 String personalId = txtPersonalID.getText().toString();
+
                 String id = ColleagueID.getText().toString();
                 String faculity = txtUserFaculity.getText().toString();
                 String password = txtUserPassword.getText().toString();
@@ -64,12 +84,19 @@ public class Registeration extends AppCompatActivity {
                     Toast.makeText(Registeration.this, "Please fill empty fields", Toast.LENGTH_SHORT).show();
                 }
 
-                else if (!colleageId.equals(id)||!personal.equals(personalId)){
-                    Toast.makeText(Registeration.this,"Ther is not student with this id",Toast.LENGTH_SHORT).show();
+                else if (!arrColleageId.contains(id) && !arrPersonalId.contains(personalId)){
+                    Toast.makeText(Registeration.this,"There is not student with this id",Toast.LENGTH_SHORT).show();
                 }
                 else {
+
                     // uploadData();
                     Intent i = new Intent(Registeration.this, RegistrationServices.class);
+
+                    /**
+                     * start bundle with key and value to send .
+                     *
+                     * call in other class with key e.x-- "name"
+                     */
                     i.putExtra("name", name);
                     i.putExtra("id", id);
                     i.putExtra("password", password);

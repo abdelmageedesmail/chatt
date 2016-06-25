@@ -215,6 +215,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         CameraUpdate zoom = CameraUpdateFactory.zoomTo(15);
         mMap.animateCamera(zoom);
     }
+
+
     class driverTask extends AsyncTask<Void, Void, String> {
 
         String id, lat, lon;

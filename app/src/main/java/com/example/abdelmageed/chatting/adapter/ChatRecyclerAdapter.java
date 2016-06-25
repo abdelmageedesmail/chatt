@@ -16,9 +16,7 @@ import com.example.abdelmageed.chatting.model.Contact;
 
 import java.util.ArrayList;
 
-/**
- * Created by mohamed on 20/06/16.
- */
+
 public class ChatRecyclerAdapter extends RecyclerView.Adapter<ChatRecyclerAdapter.MyHolder> {
 
     Context context;

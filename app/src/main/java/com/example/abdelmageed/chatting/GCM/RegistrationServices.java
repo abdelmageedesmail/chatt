@@ -35,6 +35,7 @@ public class RegistrationServices extends IntentService {
     String id, personalId, password, name;
 
 
+
     public RegistrationServices() {
         super("RegistrationService");
     }
@@ -51,6 +52,9 @@ public class RegistrationServices extends IntentService {
         name = intent.getExtras().getString("name");
 
 
+        /**
+         * Instance id to create token
+         */
         InstanceID instanceID = InstanceID.getInstance(this);
         try {
             String token = instanceID.getToken("937347683419", GoogleCloudMessaging.INSTANCE_ID_SCOPE, null);
@@ -62,37 +66,7 @@ public class RegistrationServices extends IntentService {
     }
 
 
-//    public void sendTokenToServer(final String token) {
-//        String ADD_TOKEN_URL = "http://emtyazna.com/mohamed/chating/index.php/activities/registerUser";
-//        StringRequest stringRequest = new StringRequest(Request.Method.POST, ADD_TOKEN_URL, new Response.Listener<String>() {
-//            @Override
-//            public void onResponse(String response) {
-//                int responseCode = Integer.parseInt(response);
-//                if (responseCode == 1) {
-//                    prefEditor.putBoolean("token_sent", true).apply();
-//                    Log.e("Registration Service", "Response : Send Token Success");
-//                } else {
-//                    prefEditor.putBoolean("token_sent", false).apply();
-//                    Log.e("Registration Service", "Response : Send Token Failed");
-//                }
-//            }
-//        }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                prefEditor.putBoolean("token_sent", false).apply();
-//                Log.e("Registration Service", "Error :Send Token Failed");
-//            }
-//        }) {
-//            @Override
-//            protected Map<String, String> getParams() throws AuthFailureError {
-//
-//                Map<String, String> params = new HashMap<>();
-//                params.put("gcmToken", token);
-//                return params;
-//            }
-//        };
-//        Volley.newRequestQueue(this).add(stringRequest);
-//    }
+
 
     public void uploadData(final String token) {
         String url = "http://emtyazna.com/mohamed/chating/index.php/activities/registerUser";

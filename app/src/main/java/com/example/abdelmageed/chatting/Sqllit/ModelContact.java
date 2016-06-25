@@ -1,8 +1,6 @@
 package com.example.abdelmageed.chatting.Sqllit;
 
-/**
- * Created by abdelmageed on 20/06/16.
- */
+
 public class ModelContact {
 
     private int _id;

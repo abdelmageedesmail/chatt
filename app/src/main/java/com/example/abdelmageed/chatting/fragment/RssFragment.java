@@ -17,7 +17,8 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.example.abdelmageed.chatting.GCM.RssService;
+import com.example.abdelmageed.chatting.GCM.RegistrationServices;
+import com.example.abdelmageed.chatting.Rss.RssService;
 import com.example.abdelmageed.chatting.R;
 import com.example.abdelmageed.chatting.adapter.RssAdapter;
 import com.example.abdelmageed.chatting.model.RssItem;
@@ -59,7 +60,7 @@ public class RssFragment extends Fragment implements OnItemClickListener {
     }
 
     /**
-     * Once the {@link RssService} finishes its task, the result is sent to this
+     * Once the {@link RegistrationServices} finishes its task, the result is sent to this
      * ResultReceiver.
      */
     private final ResultReceiver resultReceiver = new ResultReceiver(new Handler()) {

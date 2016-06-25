@@ -8,9 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
 
-/**
- * Created by abdelmageed on 19/06/16.
- */
+
 public class DbConnection extends SQLiteOpenHelper {
     public final static String dbName="Student.db";
     public static final int version=1;

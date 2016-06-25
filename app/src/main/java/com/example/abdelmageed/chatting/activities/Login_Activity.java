@@ -28,13 +28,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Login_Activity extends AppCompatActivity {
+
     Button logIn;
     EditText txtuserEmail, txtUserPassword;
     StringRequest stringRequest;
     RequestQueue requestQueue;
     public static String userName, userId;
     SharedPreferences pref;
-
     public static String url = "http://emtyazna.com/mohamed/chating/index.php/activities/userLogin";
 
 
@@ -45,9 +45,13 @@ public class Login_Activity extends AppCompatActivity {
         Utils utils = new Utils(this, "JF_Flat_regular.ttf");
         TextView header = (TextView) findViewById(R.id.signin_header);
         utils.FonTChange(header);
+
+
         logIn = (Button) findViewById(R.id.buutonLogin);
         txtuserEmail = (EditText) findViewById(R.id.TextEmail);
         txtUserPassword = (EditText) findViewById(R.id.TextPassword);
+
+
         pref = getApplicationContext().getSharedPreferences("Mypref", MODE_PRIVATE);
         logIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,6 +85,7 @@ public class Login_Activity extends AppCompatActivity {
                         userName = object.getString("userName");
                         userId = object.getString("id");
 
+                        //like database save data in key and value
                         SharedPreferences.Editor edit = pref.edit();
                         edit.putString("userId", userId);
                         edit.putString("userName", userName);
@@ -117,5 +122,4 @@ public class Login_Activity extends AppCompatActivity {
         requestQueue = Volley.newRequestQueue(Login_Activity.this);
         requestQueue.add(stringRequest);
     }
-
 }

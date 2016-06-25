@@ -29,9 +29,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by abdelmageed on 16/06/16.
- */
+
 public class AddFriendDialog extends Dialog {
 
     RequestQueue requestQueue;

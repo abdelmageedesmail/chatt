@@ -15,9 +15,7 @@ import com.example.abdelmageed.chatting.model.NavDrawerItem;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * Navigation drawer with its recycler view
- */
+
 public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDrawerAdapter.MyViewHolder> {
     List<NavDrawerItem> data = Collections.emptyList();
     private LayoutInflater inflater;

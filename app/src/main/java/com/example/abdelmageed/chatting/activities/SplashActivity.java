@@ -6,14 +6,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.ImageView;
-
 import com.example.abdelmageed.chatting.FirstActivity;
 import com.example.abdelmageed.chatting.R;
 
 
-/**
- * Created by Amer Elsayed on 11/21/2015.
- */
 public class SplashActivity extends Activity {
     Runnable run;
     Handler handler = new Handler();
@@ -26,11 +22,15 @@ public class SplashActivity extends Activity {
 
         setContentView(R.layout.splash_screen);
 
-
         run = new Runnable() {
             @Override
             public void run() {
 
+
+                /**
+                 * intent from this Activity to first activity
+                 * begin animation from right to left code in res---- anim ---
+                 */
 
                 Intent intent = new Intent(getApplicationContext(), FirstActivity.class);
                 startActivity(intent);

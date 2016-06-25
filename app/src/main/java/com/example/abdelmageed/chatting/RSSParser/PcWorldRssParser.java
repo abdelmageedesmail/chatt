@@ -12,9 +12,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by abdelmageed on 24/06/16.
- */
+
 public class PcWorldRssParser {
 
     // We don't use namespaces

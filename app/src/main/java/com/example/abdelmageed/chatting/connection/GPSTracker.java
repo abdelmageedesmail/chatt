@@ -16,9 +16,6 @@ import android.util.Log;
 
 import com.google.android.gms.maps.GoogleMap;
 
-/**
- * Created by abdelmageed on 29/04/16.
- */
 
 public class GPSTracker implements LocationListener {
     GoogleMap gMap;
